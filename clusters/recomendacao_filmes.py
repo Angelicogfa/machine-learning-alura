@@ -25,3 +25,14 @@ kmn = KMeans(n_clusters=3)
 kmn.fit(generos_escalados)
 
 print(f'Grupos {kmn.labels_}')
+print(f"Generos¨:\n {generos}")
+print(f"Centros:\n {kmn.cluster_centers_}")
+
+## Relacionando labels de grupos com centros
+grupos = pd.DataFrame(kmn.cluster_centers_, columns=generos.columns)
+grupos.head()
+
+## Plotando os dados em grafico para melhorvisualizar os clusters e os generos de cada grupo
+grupos.T.plot.bar(subplots=True,
+                figsize= (28,28), 
+                sharex=False)
